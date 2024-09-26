@@ -1,0 +1,90 @@
+.chat-container {
+    width: 300px;
+    height: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.science-guide {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.science-guide ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.science-guide li {
+    margin-bottom: 10px;
+}
+
+.science-guide a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.chat-box {
+    padding: 10px;
+    overflow-y: auto;
+    height: 450px;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 70%;
+}
+
+.outgoing {
+    background-color: #dcf8c6;
+    border-bottom-left-radius: 0;
+    margin-left: 30%;
+}
+
+.incoming {
+    background-color: #f7f7f7;
+    border-bottom-right-radius: 0;
+    margin-right: 30%;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.message-text {
+    font-size: 16px;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.input-field {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Science Module Guide</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="science-guide">
+            <h2>SCIENCE CHATBOT</h2>
+            <ul>
+                
+            </ul>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <!-- Messages will be displayed here -->
+        </div>
+        <div class="input-field">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const sendButton = document.getElementById('send-btn');
+        const userInput = document.getElementById('user-input');
+        const chatBox = document.getElementById('chat-box');
+
+        sendButton.addEventListener('click', async () => {
+            const question = userInput.value;
+            if (question) {
+                addMessage('You', question);
+                userInput.value = '';
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+                const data = await response.json();
+                addMessage('Bot', data.response);
+            }
+        });
+
+        function addMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `
+                <span class="message-content">
+                    <span class="sender">${sender}</span>
+                    <span class="message-text">${message}</span>
+                    <span class="timestamp">${new Date().toLocaleTimeString()}</span>
+                </span>
+            `;
+            if (sender === 'You') {
+                messageElement.classList.add('outgoing');
+            } else {
+                messageElement.classList.add('incoming');
+            }
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+        }
+    </script>
+</body>
+</html>
+
+
+
